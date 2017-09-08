@@ -9,7 +9,18 @@
 	)
 )
 
+(defun sim (a b)
+(cond 
+  ((not (and a b)) (append a b))
+   ((member (car a) b) (sim (remove (car a) a) (remove (car a) b))) 
+	(t (cons (car a) (sim (cdr a) b)))
+))
+
+(defun test (x y)
+  (list (remove (car x) y) (remove (car x) x) ))
+
 (defun main ()
+	(print (sim '() '(* 1 b 2 3 5)))
 	(print (multiset_check '(1 3) '(1 3 4 5)))
 )
 

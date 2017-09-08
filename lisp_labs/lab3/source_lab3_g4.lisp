@@ -10,18 +10,24 @@
 )
 
 (defun sim (a b)
-(cond 
-  ((not (and a b)) (append a b))
-   ((member (car a) b) (sim (remove (car a) a) (remove (car a) b))) 
-	(t (cons (car a) (sim (cdr a) b)))
-))
+	(cond 
+		((not (and a b)) (append a b))
+		((member (car a) b) (sim (remove (car a) a) (remove (car a) b))) 
+		(t (cons (car a) (sim (cdr a) b)))
+	)
+)
 
-(defun test (x y)
-  (list (remove (car x) y) (remove (car x) x) ))
+(defun top_maplist(f lst)
+	(cond 
+		((null lst) ())
+		(t (cons (funcall f lst) (top_maplist f (cdr lst))))
+	)
+)
 
 (defun main ()
-	(print (sim '() '(* 1 b 2 3 5)))
-	(print (multiset_check '(1 3) '(1 3 4 5)))
+	(print (top_maplist 'reverse '(1 2 3))) 	; 4
+	(print (sim '() '(* 1 b 2 3 5))) 			; 7
+	(print (multiset_check '(1 3) '(1 3 4 5))) 	; 12
 )
 
 (main)

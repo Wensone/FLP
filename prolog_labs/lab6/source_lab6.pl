@@ -8,7 +8,7 @@ goalo:-writeln('Vvedite spisok i razdeliteli:'), read(S), read(R1), read(R2), sp
 max(A,B,A) :- B<A.
 max(A,B,B) :- A=<B.
 min_elt([X],X).
-min_elt([H|T],M) :- min_elt(T,M1),minl(H,M1,M).
+min_elt([H|T],M) :- min_elt(T,M1),max(H,M1,M).
 num_elt([],_,_,[]).
 num_elt([P|T],P,N,[N|R]) :- N1 is N+1,num_elt(T,P,N1,R).
 num_elt([P|T],Q,N,R)     :- N1 is N+1,num_elt(T,Q,N1,R).

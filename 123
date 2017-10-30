@@ -1,0 +1,5 @@
+goal1:-writeln('Spisok. Delitel.:'), read(S), read(R1), read(R2), swap(R1, R2, S).
+
+swap(A, B, S):- A > B, splitl(B, A, S, S1, S2, S3), writeln(S), writeln(S1), writeln(S2), writeln(S3).
+swap(A, B, S):- A < B, splitl(A, B, S, S1, S2, S3), writeln(S), writeln(S1), writeln(S2), writeln(S3).
+swap(A, B, S):- A =:= B, writeln("Incorrect"), !.

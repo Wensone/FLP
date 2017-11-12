@@ -8,17 +8,16 @@ nechet(A, B):-A @> B, !.
 nechet(A, B):-B mod 2 =\= 0, writeln(B), B1 is B - 1, nechet(A, B1).
 nechet(A, B):-B mod 2 =:= 0, B1 is B - 1, nechet(A, B1).
 
-goal3:-read(X), find_min(X, 9, 9).
-find_min(X, MIN, NUMB):-X =:= 0, writeln(MIN).
+goal3:-read(X), find_min(X, 10, 9).
+find_min(X, MIN, NUMB):-X =:= 0, NUMB =< MIN, writeln(NUMB).
+find_min(X, MIN, NUMB):-X =:= 0, NUMB > MIN, writeln(MIN).
 find_min(X, MIN, NUMB):-NUMB < MIN, NUMB1 is X mod 10, X1 is X // 10, find_min(X1, NUMB, NUMB1).
 find_min(X, MIN, NUMB):-NUMB1 is X mod 10, X1 is X // 10, find_min(X1, MIN, NUMB1).
 
-input:-repeat, read(X), fib(X, NUMB), writeln(NUMB), check(X), !.
+input:-repeat, read(X), check(X), !.
 check(X):-X < 0, !.
-check(_):-fail.
+check(X):-fib(X, NUMB), writeln(NUMB), fail.
 fib(X, NUMB):-X < 0, !.
 fib(0, 1):-!.
 fib(1, 1):-!.
 fib(X, NUMB):-X1 is X - 2, X2 is X - 1, fib(X1, A), fib(X2, B), NUMB is A + B.
-
-
